@@ -24,12 +24,12 @@ public class Board {
 		this.name = name;
 	}
 
-	@JsonProperty("href")
+	@JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("href")
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
