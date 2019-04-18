@@ -49,17 +49,6 @@ public class TrelloResource {
 		return success;
 	}
 
-//	public String getBoardSearch(String query) {
-//		ClientResource cr = null;
-//		String search = null;
-//		try {
-//			cr = new ClientResource(base_url);
-//			search = cr.getQueryValue(query);
-//	}catch (ResourceException re) {
-//		System.err.println("Error when searching the query: " + query +" " + cr.getResponse().getStatus());
-//
-//	}return search;
-//	}
 	
 	public boolean addList(String name, String idBoard) {
 		ClientResource cr = null;
@@ -76,8 +65,18 @@ public class TrelloResource {
 	}
 
 	public Collection<List> getListSearch(String query) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<List> col = new ArrayList<List>();
+		List res = null;
+		ClientResource cr = null;
+		try {
+			cr = new ClientResource(base_url);
+			if(List.class.getName().contains(query)) {
+			res = cr.get(List.class);
+			col.add(res);
+			}}catch (ResourceException re) {
+		System.err.println("Error when searching the query: " + query +" " + cr.getResponse().getStatus());
+
+	}return col;
 	}
 
 	public boolean addCard(String name, String idList) {
@@ -95,8 +94,18 @@ public class TrelloResource {
 	}
 
 	public Collection<Card> getCardSearch(String query) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Card> col = new ArrayList<Card>();
+		Card res = null;
+		ClientResource cr = null;
+		try {
+			cr = new ClientResource(base_url);
+			if(Card.class.getName().contains(query)) {
+			res = cr.get(Card.class);
+			col.add(res);
+				}}catch (ResourceException re) {
+		System.err.println("Error when searching the query: " + query +" " + cr.getResponse().getStatus());
+
+	}return col;
 	}
 
 	public boolean deleteBoard(String id, String usuario) {
@@ -185,9 +194,22 @@ public class TrelloResource {
 		
 		return success;
 	}
-//	public Collection<Board> getBoardSearch(String query) {
-//		
-//	}
+////Está mal supongo
+	public Collection<Board> getBoardSearch(String query) {
+		Collection<Board> col = new ArrayList<Board>();
+		Board res = null;
+		ClientResource cr = null;
+		try {
+			cr = new ClientResource(base_url);
+			if(Board.class.getName().contains(query)) {
+			res = cr.get(Board.class);
+			col.add(res);
+			}}catch (ResourceException re) {
+		System.err.println("Error when searching the query: " + query +" " + cr.getResponse().getStatus());
+
+	}return col;
+	}
+	
 
 	
 	
