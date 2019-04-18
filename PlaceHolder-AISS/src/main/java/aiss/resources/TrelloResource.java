@@ -41,7 +41,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +name);
 			cr.setEntityBuffering(true);
-			cr.post(datos, Board.class);
+			cr.post(name, Board.class);
 		} catch (ResourceException re) {
 			System.err.println("Error when adding the board: " + name +" " + cr.getResponse().getStatus());
 			success = false;
@@ -56,7 +56,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +name);
 			cr.setEntityBuffering(true);
-			cr.post(idBoard, List.class);
+			cr.post(name, List.class);
 		} catch (ResourceException re) {
 			System.err.println("Error when adding the list: " + name +" " + cr.getResponse().getStatus());
 			success = false;
@@ -85,7 +85,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +name);
 			cr.setEntityBuffering(true);
-			cr.post(idList, Card.class);
+			cr.post(name, Card.class);
 		} catch (ResourceException re) {
 			System.err.println("Error when adding the card: " + name +" " + cr.getResponse().getStatus());
 			success = false;
@@ -156,7 +156,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +id);
 			cr.setEntityBuffering(true);
-			cr.put(id);
+			cr.put(name);
 		} catch (ResourceException re) {
 			System.err.println("Error when updating the playlist: " +name +" " + cr.getResponse().getStatus());
 			success = false;
@@ -171,7 +171,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +id);
 			cr.setEntityBuffering(true);
-			cr.put(id);
+			cr.put(name);
 		} catch (ResourceException re) {
 			System.err.println("Error when updating the card: " +name +" " + cr.getResponse().getStatus());
 			success = false;
@@ -186,7 +186,7 @@ public class TrelloResource {
 		try {
 			cr = new ClientResource(base_url +"/" +id);
 			cr.setEntityBuffering(true);
-			cr.put(id);
+			cr.put(name);
 		} catch (ResourceException re) {
 			System.err.println("Error when updating the list: " +name +" " + cr.getResponse().getStatus());
 			success = false;
