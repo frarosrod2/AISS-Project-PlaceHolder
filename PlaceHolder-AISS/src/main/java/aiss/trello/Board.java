@@ -15,7 +15,11 @@ public class Board {
 	@JsonProperty("name")
     private String name;
     @JsonProperty("id")
+<<<<<<< HEAD
     private Integer id;
+=======
+    private String id;
+>>>>>>> e113d55688eae671c1b99fae7441dc8045c34790
     
     
 
@@ -24,6 +28,15 @@ public class Board {
 		this.name = name;
 	}
 
+<<<<<<< HEAD
+=======
+	public Board(String id, String name) {
+		this.id = id;
+		this.name = name;
+		
+	}
+
+>>>>>>> e113d55688eae671c1b99fae7441dc8045c34790
 	@JsonProperty("name")
     public String getName() {
         return name;
@@ -35,12 +48,20 @@ public class Board {
     }
 
     @JsonProperty("id")
+<<<<<<< HEAD
     public Integer getId() {
+=======
+    public String getId() {
+>>>>>>> e113d55688eae671c1b99fae7441dc8045c34790
         return id;
     }
 
     @JsonProperty("id")
+<<<<<<< HEAD
     public void setId(Integer id) {
+=======
+    public void setId(String id) {
+>>>>>>> e113d55688eae671c1b99fae7441dc8045c34790
         this.id = id;
     }
 }
