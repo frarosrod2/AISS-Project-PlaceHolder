@@ -1,170 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>aiss.HelloWorldServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/helloworld</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <error-page>
+  	<exception-type>java.lang.ArrayIndexOutOfBoundsException</exception-type>
+  	<location>/error.html</location>
+  </error-page>
 
-
-
-	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>aiss.controller.HomeController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>LoginWith</servlet-name>
-		<servlet-class>aiss.controller.LoginController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginWith</servlet-name>
-		<url-pattern>/login</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>EditorRepositorio</servlet-name>
-		<servlet-class>aiss.controller.EditorController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EditorRepositorio</servlet-name>
-		<url-pattern>/editor</url-pattern>
-	</servlet-mapping>
-	
-	<!--GitLabAuthController -->
-	<servlet>
-		<description />
-		<servlet-name>GitLabAuthController</servlet-name>
-		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>GitLab</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GitLabAuthController</servlet-name>
-		<url-pattern>/AuthController/GitLab</url-pattern>
-	</servlet-mapping>
-
-	<!--GitLabOAuth2Callback -->
-	<servlet>
-		<description />
-		<servlet-name>GitLabOAuth2Callback</servlet-name>
-		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>GitLab</param-value>
-		</init-param>
-		<init-param>
-			<param-name>onSuccess</param-name>
-			<param-value>redirect:/getGitLabRepository</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GitLabOAuth2Callback</servlet-name>
-		<url-pattern>/oauth2callback/GitLab</url-pattern>
-	</servlet-mapping>
-	
-	<!--GitHubAuthController -->
-	<servlet>
-		<description />
-		<servlet-name>GitHubAuthController</servlet-name>
-		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>GitHub</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GitHubAuthController</servlet-name>
-		<url-pattern>/AuthController/GitHub</url-pattern>
-	</servlet-mapping>
-
-	<!--GitHubOAuth2Callback -->
-	<servlet>
-		<description />
-		<servlet-name>GitHubOAuth2Callback</servlet-name>
-		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>GitHub</param-value>
-		</init-param>
-		<init-param>
-			<param-name>onSuccess</param-name>
-			<param-value>redirect:/getGitHubRepository</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GitHubOAuth2Callback</servlet-name>
-		<url-pattern>/oauth2callback/GitHub</url-pattern>
-	</servlet-mapping>
-	<!--TrelloAuthController -->
-	<servlet>
-		<description />
-		<servlet-name>TrelloAuthController</servlet-name>
-		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>Trello</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>TrelloAuthController</servlet-name>
-		<url-pattern>/AuthController/Trello</url-pattern>
-	</servlet-mapping>
-
-	<!--TrelloOAuth2Callback -->
-	<servlet>
-		<description />
-		<servlet-name>TrelloOAuth2Callback</servlet-name>
-		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>Trello</param-value>
-		</init-param>
-		<init-param>
-			<param-name>onSuccess</param-name>
-			<param-value>redirect:/getBoard</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>TrelloOAuth2Callback</servlet-name>
-		<url-pattern>/oauth2callback/Trello</url-pattern>
-	</servlet-mapping>
-	<!--TrelloAuthController -->
-	<servlet>
-		<description />
-		<servlet-name>TodoistAuthController</servlet-name>
-		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>Todoist</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>TodoistAuthController</servlet-name>
-		<url-pattern>/AuthController/Todoist</url-pattern>
-	</servlet-mapping>
-
-	<!--TrelloOAuth2Callback -->
-	<servlet>
-		<description />
-		<servlet-name>TodoistOAuth2Callback</servlet-name>
-		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-		<init-param>
-			<param-name>provider</param-name>
-			<param-value>Todoist</param-value>
-		</init-param>
-		<init-param>
-			<param-name>onSuccess</param-name>
-			<param-value>redirect:/getBoard</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>TodoistOAuth2Callback</servlet-name>
-		<url-pattern>/oauth2callback/Todoist</url-pattern>
-	</servlet-mapping>
-</web-app>
+<servlet>
+    <description></description>
+    <display-name>GithubAuthController</display-name>
+    <servlet-name>GithubAuthController</servlet-name>
+    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Github</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GithubAuthController</servlet-name>
+    <url-pattern>/AuthController/Github</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GithubOAuth2Callback</display-name>
+    <servlet-name>GithubOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Github</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>onSuccess</param-name>
+    	<param-value>close</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GithubOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/Github</url-pattern>
+  </servlet-mapping>    
+  </web-app>

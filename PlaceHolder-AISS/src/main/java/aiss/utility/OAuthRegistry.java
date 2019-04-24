@@ -23,8 +23,6 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.MemoryDataStoreFactory;
 
-import aiss.controller.oauth.AuthorizationCodeFlowModificado;
-
 /**
  * 
  * This class loads the data from the OAuth providers and creates
